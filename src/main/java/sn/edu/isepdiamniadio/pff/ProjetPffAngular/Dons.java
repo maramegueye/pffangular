@@ -29,12 +29,20 @@ public class Dons implements Serializable {
      @Column(nullable = false)
     private String montant;
 
-    public Dons(Integer id, String nomcomplet, String email, String telephone, String montant) {
+    @Column(nullable = false)
+    private String operation;
+
+     @Column(nullable = false)
+    private String reference;
+
+    public Dons(Integer id, String nomcomplet, String email, String telephone, String montant,String operation,String reference) {
         this.id = id;
         this.nomcomplet = nomcomplet;
         this.email = email;
         this.telephone = telephone;
         this.montant = montant;
+        this.operation = operation;
+        this.reference = reference;
     }
 
     public Integer getId() {
@@ -75,6 +83,18 @@ public class Dons implements Serializable {
 
     public void setMontant(String montant) {
         this.montant = montant;
+    }
+    public String getOperation() {
+        return operation;
+    }
+    public void setOperation(String operation) {
+        this.operation = operation;
+    }
+    public String getReference() {
+        return reference;
+    }
+    public void setReference(String reference) {
+        this.reference = reference;
     }
     
 }

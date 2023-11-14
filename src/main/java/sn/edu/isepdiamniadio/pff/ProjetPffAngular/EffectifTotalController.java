@@ -3,7 +3,6 @@ package sn.edu.isepdiamniadio.pff.ProjetPffAngular;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,42 +16,38 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/demandes")
-public class DemandeController {
-    
-    @Autowired
-    private  DemandeService demandeService ;
+@RequestMapping("/api/v1/effectifs")
+public class EffectifTotalController {
 
+    private EffectifTotalService effectifTotalService;
     @GetMapping
-     @CrossOrigin("http://localhost:4200/")
-    public List<DemandeAdoption> getDemandeFormulaires(){
-        return this.demandeService.getDemandeFormulaires();
+    @CrossOrigin("http://localhost:4200/")
+    public List<EffectifTotal> getEffectifTotals(){
+        return this.effectifTotalService.getEffectifTotals();
     }
 
     @GetMapping("/{id}")
-    public DemandeAdoption FindDemandeFormulaire(@PathVariable Integer id){
-        Optional <DemandeAdoption> app = this.demandeService.FindDemandeFormulaire(id);
+    public EffectifTotal FindEffectifTotal(@PathVariable Integer id){
+        Optional <EffectifTotal> app = this.effectifTotalService.FindEffectifTotal(id);
         return app.orElse(null);
     }
-    
-    @DeleteMapping("/{id}") 
-    public ResponseEntity<Object> deleteDemandeFormulaire(@PathVariable Integer id){
-        DemandeAdoption demandeFormulaire = FindDemandeFormulaire(id);
-        if (demandeFormulaire==null) {
+      @DeleteMapping("/{id}") 
+    public ResponseEntity<Object> deleteEffectifTotal(@PathVariable Integer id){
+        EffectifTotal effectifTotal =  FindEffectifTotal(id);
+        if (effectifTotal==null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("la demande numero " +id+" n'exite pas" );   
         }
 
-        this.demandeService.deleteDemandeFormulaire(id);
+        this.effectifTotalService.deleteEffectifTotal(id);
         return ResponseEntity.status(HttpStatus.OK).body("suppression  reussi de la demande  numero " +id);
     }
 
     @PutMapping()
      @CrossOrigin(origins = "*",methods = {RequestMethod.PUT})
-    public ResponseEntity<DemandeAdoption> ajouterform(@RequestBody DemandeAdoption demandeFormulaire){
-        this.demandeService.saveDemandeFormulaire(demandeFormulaire);
-        return ResponseEntity.status(HttpStatus.CREATED).body(demandeFormulaire);
+    public ResponseEntity<EffectifTotal> ajouterform(@RequestBody EffectifTotal effectifTotal){
+        this.effectifTotalService.saveEffectifTotal(effectifTotal);
+        return ResponseEntity.status(HttpStatus.CREATED).body(effectifTotal);
 
     }
 
-    
 }
