@@ -23,7 +23,7 @@ public class DemandeController {
     private  DemandeService demandeService ;
 
     @GetMapping
-     @CrossOrigin("http://localhost:4200/")
+
     public List<DemandeAdoption> getDemandeFormulaires(){
         return this.demandeService.getDemandeFormulaires();
     }
