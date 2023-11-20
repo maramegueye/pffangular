@@ -2,8 +2,11 @@ package sn.edu.isepdiamniadio.pff.ProjetPffAngular;
 
 import java.io.Serializable;
 
+import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -13,26 +16,28 @@ import jakarta.persistence.Table;
 public class Personnel implements Serializable {
   
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nom;
     private String prenom;
 
     @Column(nullable = false)
     private String profil;
-
     @Column(nullable = false)
     private String telephone;
+    private String adresse;
 
-    @Column(nullable = false)
-    private String adrresse;
+    public Personnel(){
+        
+    }
 
-    public Personnel(Integer id, String nom, String prenom, String profil, String telephone, String adrresse) {
+    public Personnel(Integer id, String nom, String prenom, String profil, String telephone, String adresse) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.profil = profil;
         this.telephone = telephone;
-        this.adrresse = adrresse;
+        this.adresse = adresse;
     }
 
     public Integer getId() {
@@ -76,11 +81,11 @@ public class Personnel implements Serializable {
     }
 
     public String getAdrresse() {
-        return adrresse;
+        return adresse;
     }
 
-    public void setAdrresse(String adrresse) {
-        this.adrresse = adrresse;
+    public void setAdrresse(String adresse) {
+        this.adresse = adresse;
     }
     
 

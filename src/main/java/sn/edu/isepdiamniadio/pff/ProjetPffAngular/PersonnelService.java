@@ -7,20 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
 public class PersonnelService {
-    
 
     @Autowired
-    private PersonnelRepository personnelsRepository;
-    public List<Personnel> getPersonnels(){
-        return this.personnelsRepository.findAll();
+    
+    
+private PersonnelRepository personnelRepository;
+
+    public List<Personnel> getPersonnels() {
+        return personnelRepository.findAll();
     }
-    public Optional<Personnel> FindPersonnels(Integer id){
-        return this.personnelsRepository.findById(id);
+
+    public Optional<Personnel> findPersonnel(Integer id) {
+        return personnelRepository.findById(id);
     }
-    public void savePersonnels(Personnel personnels){
-        this.personnelsRepository.save(personnels);
-    }
-    public void deletePersonnels(Integer id){
-        this.personnelsRepository.deleteById(id);
+
+    public void deletePersonnel(Integer id) {
+        personnelRepository.deleteById(id);
+    } 
+        
+public Personnel savePersonnel(Personnel personnel) {
+        return personnelRepository.save(personnel);
     }
 }

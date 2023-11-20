@@ -39,6 +39,9 @@ public class Adopteur implements Serializable {
     // public Apprenant(){
  
     // }
+    public Adopteur(){
+        
+    }
     public Adopteur(Integer id,String prenom,String nom,String adresse,Integer telephone, String email){
     this.id = id;
      this.prenom = prenom;
