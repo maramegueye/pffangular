@@ -1,5 +1,8 @@
 package sn.edu.isepdiamniadio.pff.ProjetPffAngular;
 
+import java.io.UnsupportedEncodingException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,16 +16,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.mail.MessagingException;
+
 @RestController
 @RequestMapping("/api/v1/admins")
 public class AdminController {
 
    @Autowired
     private AdminService AdminService;
+
+    @Autowired
+    private EnvoyerEmailService envoyerEmailService;
     
      @GetMapping
     // @CrossOrigin("http://localhost:4200")
     public List<Admin> getAdmins(){
+        
         return this.AdminService.getAdmins();
     }
 

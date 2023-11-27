@@ -1,5 +1,6 @@
 package sn.edu.isepdiamniadio.pff.ProjetPffAngular;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,9 +24,20 @@ public class DemandeController {
     @Autowired
     private  DemandeService demandeService ;
 
+    @Autowired
+    private EnvoyerEmailService envoyerEmailService;
+
     @GetMapping
      @CrossOrigin("http://localhost:4200/")
     public List<DemandeAdoption> getDemandeFormulaires(){
+
+        try {
+            envoyerEmailService.sendEmail("syllaaissatou38@gmail.com","demerage du serveurs","le serveurs a ete demarer "+new Date());
+       
+        } catch (Exception e) {
+            System.out.println("erreurs envoye email");
+            e.printStackTrace();
+        }
         return this.demandeService.getDemandeFormulaires();
     }
 

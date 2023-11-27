@@ -29,19 +29,19 @@ public class EffectifTotal implements Serializable{
     private String entre_enfants;
 
       @Column(nullable = false)
-    private String sotie_enfants;
+    private String sortie_enfants;
 
     public EffectifTotal() {
         // Default constructor is needed by Hibernate
     }
 
-    public EffectifTotal(Integer id, String nbrfilles, String nbrgarcons, String nbrtotal,String entre_enfants, String sotie_enfants) {
+    public EffectifTotal(Integer id, String nbrfilles, String nbrgarcons, String nbrtotal,String entre_enfants, String sortie_enfants) {
         this.id = id;
         this.nbrfilles = nbrfilles;
         this.nbrgarcons = nbrgarcons;
         this.nbrtotal = nbrtotal;
         this.entre_enfants = entre_enfants;
-        this.sotie_enfants = sotie_enfants;
+        this.sortie_enfants = sortie_enfants;
     }
 
 
@@ -83,11 +83,11 @@ public class EffectifTotal implements Serializable{
     public void setEntre_enfants(String entre_enfants) {
         this.entre_enfants = entre_enfants;
     }
-    public String getSotie_enfants() {
-        return sotie_enfants;
+    public String getSortie_enfants() {
+        return sortie_enfants;
     }
-    public void setSotie_enfants(String sotie_enfants) {
-        this.sotie_enfants = sotie_enfants;
+    public void setSortie_enfants(String sortie_enfants) {
+        this.sortie_enfants = sortie_enfants;
     }
 
    
